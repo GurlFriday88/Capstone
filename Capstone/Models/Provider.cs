@@ -25,7 +25,11 @@ namespace Capstone.Models
 
         public string MiscNotes { get; set; }
 
+        //Foreign Keys for patient and prefixes 
+
         public IList<Patient> PatientType { get; set; }
+
+        public BcbsPrefix BcbsPrefix { get; set; }
 
         public IList<BcbsPrefix> BcbsPrefixes { get; set; }
     }

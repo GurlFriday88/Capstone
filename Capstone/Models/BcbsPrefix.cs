@@ -11,6 +11,8 @@ namespace Capstone.Models
 
         public string Prefix { get; set; }
 
+        //Foreign Keys
+
         public int ProviderID { get; set; }
 
         public Provider Provider { get; set; }

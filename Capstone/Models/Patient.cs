@@ -15,9 +15,10 @@ namespace Capstone.Models
 
         public string  Frames { get; set; }
 
-        public string Lense { get; set; }
+        public string Lens { get; set; }
 
         //foreign key to provider table
         public int ProviderID { get; set; }
+
     }
 }

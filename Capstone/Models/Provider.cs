@@ -29,8 +29,6 @@ namespace Capstone.Models
 
         public IList<Patient> PatientType { get; set; }
 
-        public BcbsPrefix BcbsPrefix { get; set; }
-
         public IList<BcbsPrefix> BcbsPrefixes { get; set; }
     }
 }

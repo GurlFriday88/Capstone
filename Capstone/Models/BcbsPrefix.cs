@@ -15,7 +15,7 @@ namespace Capstone.Models
 
         public int ProviderID { get; set; }
 
-        public Provider Provider { get; set; }
+       
 
     }
 }

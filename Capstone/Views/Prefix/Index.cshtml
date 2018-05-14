@@ -8,6 +8,7 @@
         <tr>
             <th>Alpha Prefix</th>
             <th>Location</th>
+            <th>Action</th>
         </tr>
 
         @foreach (var prefix in Model)
@@ -15,6 +16,8 @@
         <tr>
             <td>@prefix.Prefix</td>
             <td>@prefix.Provider.Name</td>
+            <td><a class= "btn btn-sm btn-primary" asp-controller="Prefix" asp-action ="Remove">Delete</a></td>
+            
 
 
         </tr>

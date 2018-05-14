@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Data;
 using Capstone.Models;
+using Capstone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,56 +28,59 @@ namespace Capstone.Controllers
             return View(bcbsPrefixes);
         }
 
-        //public IActionResult Add()
-        //{
-        //    AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel(context.Categories.ToList());
-        //    return View(addCheeseViewModel);
-        //}
+        //routes to add prefix view
 
-        //[HttpPost]
-        //public IActionResult Add(AddCheeseViewModel addCheeseViewModel)
-        //{
-        //    CheeseCategory newCheeseCategory =
-        //            context.Categories.Single(c => c.ID == addCheeseViewModel.CategoryID);
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Add the new cheese to my existing cheeses
-        //        Cheese newCheese = new Cheese
-        //        {
-        //            Name = addCheeseViewModel.Name,
-        //            Description = addCheeseViewModel.Description,
-        //            CategoryID = newCheeseCategory.ID
-        //        };
+        public IActionResult Add()
+        {
+            AddPrefixViewModel addPrefixViewModel = new AddPrefixViewModel(context.Providers.ToList());
+            return View(addPrefixViewModel);
+        }
 
-        //        context.Cheeses.Add(newCheese); //adds the newly made cheese object to the db 
-        //        context.SaveChanges(); //commits the new cheese to the db (saves it)
+        //gets prefix form input and adds to db 
 
-        //        return Redirect("/Cheese"); //sends user back to the home page
-        //    }
+        [HttpPost]
+        public IActionResult Add(AddPrefixViewModel addPrefixViewModel)
+        {
+            Provider newProvider =
+                    context.Providers.Single(p => p.ID == addPrefixViewModel.PrefixID);
+            if (ModelState.IsValid)
+            {
+                // Add the new Prefix to my existing Prefixes
+                BcbsPrefix newPrefix = new BcbsPrefix
+                {
+                    Prefix = addPrefixViewModel.Prefix,
+                    ProviderID = newProvider.ID
+                };
 
-        //    return View(addCheeseViewModel); //if user inout does not pass validation send user back to the homepage with the form to add cheese along with any error messages
-        //}
+                context.BcbsPrefixes.Add(newPrefix); 
+                context.SaveChanges(); 
 
-        //public IActionResult Remove()
-        //{
-        //    ViewBag.title = "Remove Cheeses";
-        //    ViewBag.cheeses = context.Cheeses.ToList(); //sends the user to the remove page showing all the cheeses currently in db as  option for deletion
-        //    return View();
-        //}
+                return Redirect("/Prefix"); //sends user back to the home page
+            }
 
-        //[HttpPost]
-        //public IActionResult Remove(int[] cheeseIds)
-        //{
-        //    foreach (int cheeseId in cheeseIds)
-        //    {
-        //        Cheese theCheese = context.Cheeses.Single(c => c.ID == cheeseId); //theCheese stores the cheese found in the db  that matches the id of the cheese user selected for deletion 
-        //        context.Cheeses.Remove(theCheese); //query to delete the user selected cheese from the db 
-        //    }
+            return View(addPrefixViewModel); //if user inout does not pass validation send user back to the homepage with the form
+        }
 
-        //    context.SaveChanges(); // commits changes to the db
+        public IActionResult Remove()
+        {
+            ViewBag.title = "Remove Prefixes";
+            ViewBag.BcbsPrefixes = context.BcbsPrefixes.ToList(); //sends the user to the remove page showing all the prefises currently in db as option for deletion
+            return View();
+        }
 
-        //    return Redirect("/");//sends the user back to the homepage
-        //}
+        [HttpPost]
+        public IActionResult Remove(int[] prefixIds)
+        {
+            foreach (int prefixId in prefixIds)
+            {
+                BcbsPrefix thePrefix = context.BcbsPrefixes.Single(c => c.ID == prefixId); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
+                context.BcbsPrefixes.Remove(thePrefix); //query to delete the user selected prefix  
+            }
+
+            context.SaveChanges(); // commits changes to the db
+
+            return Redirect("/Prefix");//sends the user back to the homepage
+        }
     }
 
 

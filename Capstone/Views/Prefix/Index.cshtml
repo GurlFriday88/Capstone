@@ -35,70 +35,94 @@
 
 <div class="container">
     @*<div class="row">
-            <div class="box col-6">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Alpha Prefixes</h3>
-                    <div class="box-tools pull-right">
+                    <div class="box col-6">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Alpha Prefixes</h3>
+                            <div class="box-tools pull-right">
+                            <div class="btn-group">
+                                
+                            </div>
 
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!--  page info start -->
+
+                            <!-- page info end -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <p>Buttons to add or search prefixes will go here </p>
+                        </div>
+                        <!-- box-footer -->
                     </div>
-                    <!-- /.box-tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <!--  page info start -->
-                   
-                    <!-- page info end -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <p>Buttons to add or search prefixes will go here </p>
-                </div>
-                <!-- box-footer -->
-            </div>
-            <!-- /.box -->
-            <!--   options start -->
-            <!-- options end -->
-            <!-- main content end -->
-       
-    </div>
-    <!-- right aside start -->
-    <div class="col-4">col-4</div>
-    <!--  phone script start -->
-    <!-- phone script end -->
-    <!-- right aside end -->
+                    <!-- /.box -->
+                    <!--   options start -->
+                    <!-- options end -->
+                    <!-- main content end -->
 
-</div>*@
+            </div>
+            <!-- right aside start -->
+            <div class="col-4">col-4</div>
+            <!--  phone script start -->
+            <!-- phone script end -->
+            <!-- right aside end -->
+
+        </div>*@
 
     <div class="container">
-        <div class="row">
+        <div class="row ">
             <div class="col-md-10 offset-md-2">
                 <!-- General information-->
                 <div class="box box-solid box-danger">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Alpha Prefix General Info</h3>
-                        
+                        <i class="fa  fa-medkit "></i>
+                        <h3 class="box-title">  Alpha Prefix General Info </h3>
+
+
                         <!-- /.box-tools -->
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <p>The three characters preceding the subscriber identification number on BCBS member ID cards. It identifies the member's Blue Cross Blue Shield company or national account in order to properly route the claim. <br></p>
+                        <p class="lead">
+                            This guide offers an overview of Blue Cross and Blue Shield ID cards, including what
+                            the symbols mean and how to use the information on them.</p>
+                            
+                        <h5>What is an Alpha Prefix?</h5>
                         <p>
-                            Most BCBS-branded ID cards display a three-character alpha prefix in the first three positions of the
+                            The three characters preceding the subscriber identification number on BCBS member ID cards. It identifies the member's Blue Cross Blue Shield company or national account in order to properly route the claim. <br>
+                        </p>
+                        <p>
+                            Most BCBS-branded ID cards display a three to four character alpha prefix in the first three positions of the
                             member’s ID number. However, there are some exceptions. ID cards for the following products and programs
                             do not have an alpha prefix: <br>
-                            The BCBS Federal Employee Program (FEP) – The letter “R” appears in front of the ID number.*
+                            <ul>
+                                <li>The BCBS Federal Employee Program (FEP) – The letter “R” appears in front of the ID number.</li>
+                            </ul>
+
                         </p>
                     </div>
                     <!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="btn-box-tool pull-right">
+                            <a class="btn  bg-navy" asp-controller="Prefix" asp-action="Add">Add Prefix</a>
+                            <a class="btn  bg-navy" asp-controller="Prefix" asp-action="Find">Prefix Search</a>
+                        </div>
+                        
+
+                    </div>
                 </div>
                 <!-- /.box -->
 
             </div>
 
             <!--scripts-->
-            <div class="col-md-10 offset-md-2"s>
-                <div class="box box-solid box-primary">
+            <div class="col-md-10 offset-md-2" s>
+                <div class="box box-solid box-primary collapsed-box">
                     <div class="box-header with-border">
+                        <i class="fa fa-file-text "></i>
                         <h3 class="box-title">Eligibility Scripts</h3>
                         <div class="box-tools pull-right">
                             <!-- Collapse Button -->
@@ -135,7 +159,7 @@
 
                     </div>
 
-                 
+
                 </div>
                 <!-- /.box -->
             </div>
@@ -145,9 +169,11 @@
         <!-- Appearance Section-->
         <div class="row">
             <div class="col-md-10 offset-md-2">
-                <div class="box box-solid box-primary">
+                <div class="box box-solid box-primary collapsed-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Appearance</h3>
+                        <i class="fa  fa-smile-o"></i>
+                            <h3 class="box-title">
+                        Appearance</h3>
                         <div class="box-tools pull-right">
                             <!-- Collapse Button -->
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -177,7 +203,7 @@
                         </ul>
                     </div>
                     <!-- /.box-body -->
-                    
+
                 </div>
                 <!-- /.box -->
             </div>
@@ -187,9 +213,10 @@
 
         <div class="row">
             <div class="col-md-10 offset-md-2">
-                <div class="box box-solid box-primary">
+                <div class="box box-solid box-primary collapsed-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Finding Patient Eligibility Using an Alpha Prefix</h3>
+                        <i class="fa fa-hospital-o"></i>
+                        <h3 class="box-title">Finding Patient Eligibility With Alpha Prefix</h3>
                         <div class="box-tools pull-right">
                             <!-- Collapse Button -->
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -218,7 +245,7 @@
                         <p>To help keep the directory up to date and accurate, please add any new alpha prefixes you find that are not already included in the directory </p>
                     </div>
                     <!-- /.box-body -->
-                    
+
                 </div>
                 <!-- /.box -->
             </div>

@@ -1,7 +1,6 @@
 ﻿
 @model List<Capstone.Models.BcbsPrefix>
-
-    <h2>BCBS Prefix List</h2>
+<!--  <h2>BCBS Prefix List</h2>
 
     <table class="table">
 
@@ -17,7 +16,7 @@
             <td>@prefix.Prefix</td>
             <td>@prefix.Provider.Name</td>
             <td><a class= "btn btn-sm btn-primary" asp-controller="Prefix" asp-action ="Remove">Delete</a></td>
-            
+
 
 
         </tr>
@@ -27,6 +26,203 @@
     @if (Model.Count == 0)
 {
     <p>Add some prefixes</p>
-}
+} -->
+@*<p><a asp-controller="Prefix" asp-action="Add">Add Prefix</a> | <a asp-controller="Prefix" asp-action="Remove">Remove</a></p>*@
 
-    @*<p><a asp-controller="Prefix" asp-action="Add">Add Prefix</a> | <a asp-controller="Prefix" asp-action="Remove">Remove</a></p>*@
+
+<!--  Page title start -->
+<!--  page title end  -->
+
+<div class="container">
+    @*<div class="row">
+            <div class="box col-6">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Alpha Prefixes</h3>
+                    <div class="box-tools pull-right">
+
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <!--  page info start -->
+                   
+                    <!-- page info end -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <p>Buttons to add or search prefixes will go here </p>
+                </div>
+                <!-- box-footer -->
+            </div>
+            <!-- /.box -->
+            <!--   options start -->
+            <!-- options end -->
+            <!-- main content end -->
+       
+    </div>
+    <!-- right aside start -->
+    <div class="col-4">col-4</div>
+    <!--  phone script start -->
+    <!-- phone script end -->
+    <!-- right aside end -->
+
+</div>*@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+                <!-- General information-->
+                <div class="box box-solid box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Alpha Prefix General Info</h3>
+                        
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>The three characters preceding the subscriber identification number on BCBS member ID cards. It identifies the member's Blue Cross Blue Shield company or national account in order to properly route the claim. <br></p>
+                        <p>
+                            Most BCBS-branded ID cards display a three-character alpha prefix in the first three positions of the
+                            member’s ID number. However, there are some exceptions. ID cards for the following products and programs
+                            do not have an alpha prefix: <br>
+                            The BCBS Federal Employee Program (FEP) – The letter “R” appears in front of the ID number.*
+                        </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+            <!--scripts-->
+            <div class="col-md-10 offset-md-2"s>
+                <div class="box box-solid box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Eligibility Scripts</h3>
+                        <div class="box-tools pull-right">
+                            <!-- Collapse Button -->
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <h4>Remember to take down the Name and Referance # of the rep you spoke with before ending the call.</h4>
+                        <h5>Introduction</h5>
+                        <p>
+                            "Hi, my name is (your name), I was calling to see if a patient of our has routine vision benefits or a seperate vision vendor."
+                        </p>
+                        <h5>If the patient's plan includes routein vision benefits, fill in the blanks and paste the following script into eligibility section of patient's profile:</h5>
+                        <p>Per (rep name) from BCBS // (reference #), pt is eligible for a routine eye exam with a $   copay. Material copay is $   , and allowance if $   towards frames, lenses, contacts and contact lense fitting. </p>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <div>
+                            <p>Out of state (3 letters in ID) <span class="label label-primary pull-right">(800) 676-2583</span></p>
+                        </div>
+
+                        <div>
+                            <p>Florida Blue (4 letters in ID) <span class="label label-primary pull-right">(800) 727-2227</span></p>
+
+                        </div>
+
+
+
+                    </div>
+
+                 
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- end of scripts -->
+        </div>
+
+        <!-- Appearance Section-->
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+                <div class="box box-solid box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Appearance</h3>
+                        <div class="box-tools pull-right">
+                            <!-- Collapse Button -->
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>
+                            A member’s ID number includes the alpha prefix in the first three positions and all subsequent characters ‒
+                            between 6 and 14 numbers or letters ‒ up to 17 characters total. The following are examples of ID numbers with
+                            the alpha prefix highlighted:<br>
+                        </p>
+                        <p>Prefixes containing 4 alpha characters are Florida Blue Cross Blue Shield prefixes. Call (800)676-2583 for eligibility </p>
+                        <ul>
+                            <li>Alpha Prefix <p> <em>ABCD</em>1234H567</p></li>
+                            <li>Alpha Prefix <p> <em>ABCD</em>1234H56789012</p></li>
+
+                        </ul>
+                        <p>Prefixes containing 3 aplha characters are out of state plans. Call (800)727-2227 for eligibility </p>
+                        <ul>
+                            <li>Alpha Prefix <p> <em>ABC</em>1234567</p></li>
+                            <li>Alpha Prefix <p> <em>ABC</em>1234H567</p></li>
+
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                    
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+        <!-- Eligibility Instructions-->
+
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+                <div class="box box-solid box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Finding Patient Eligibility Using an Alpha Prefix</h3>
+                        <div class="box-tools pull-right">
+                            <!-- Collapse Button -->
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <p>When a patient has BCBS listed their plan and carrier refer to the company directory to find the vision provider it belongs to.
+
+                        <p>Once the patient is pulled save the Transaction ID # at the top of the page and call (800)676-2583 . Provide the automated prompt this number for faster service. </p>
+
+                        <p>Out of state prefixes can not be found with a transaction ID # instead, when prompted, provide the alpha prefix to be routed to the correct company or national account.</p>
+                        <p>Once connected to a live agent, use the BCBS script to obtain Exam and Material Co-pays.</p>
+                        <p>If the agent states that the patient's plan has a "Seperate Vision Vendor", get the vendor information from the agent and proceed to the matching vendor's portal to complete eligibility.</p>
+                        <p>
+                            The alpha prefix is critical for inquiries regarding the member, including eligibility and benefits, and is necessary
+                            for proper claim filing.
+                        </p>
+                        <p>
+                            When checking a member's eligibility on Avality, always enter the ID number, including the alpha prefix, exactly as it appears on the
+                            member’s card or patient profile.
+                        </p>
+                        <p>To help keep the directory up to date and accurate, please add any new alpha prefixes you find that are not already included in the directory </p>
+                    </div>
+                    <!-- /.box-body -->
+                    
+                </div>
+                <!-- /.box -->
+            </div>
+
+        </div>
+    </div>
+

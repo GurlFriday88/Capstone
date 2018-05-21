@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class Store
+    public class Contact
     {
         public int ID { get; set; }
 
         [Required]
-        public String Name { get; set; }
+        public string Location { get; set; }
 
-        public virtual Contact Contact { get; set; }
+        [Required]
+        public string Address { get; set; }
 
-
-
-
+        [Required]
+        public string PhoneNumber { get; set; }
     }
 }

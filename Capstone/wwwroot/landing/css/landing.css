@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
+
+
+html, body, #main {
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+    color: #fff;
+    
+}
+
+#main {
+    background:linear-gradient(
+        rgba(20,20,20, .5),
+        rgba(20,20,20, .5)),
+        url('../imgs/SoloGlasses.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+}
+ 
+
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+h3 {
+   font-family: 'Roboto', sans-serif;
+}
+
+
+
+.jumbotron {
+    background: none;
+    border-radius: 0;
+    
+}
+
+.caption h1 {
+    text-shadow: 1px 1px 15px #000;
+    
+}
+.caption h3 {
+    
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
+
+.btn-primary {
+    
+    background-color: #135486; 
+    border: 1px solid #135486;
+    box-shadow: 1px 1px 10px #000 
+    
+
+}
+
+.btn-primary:hover {
+    background-color: #df3040; 
+    border: 1px solid #df3040; 
+
+}
+
+
+
+
+
+
+
+
+
+/* media query for mobile */

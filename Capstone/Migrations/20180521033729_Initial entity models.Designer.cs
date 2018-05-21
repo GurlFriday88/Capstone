@@ -11,9 +11,10 @@ using System;
 namespace Capstone.Migrations
 {
     [DbContext(typeof(CapstoneDBContext))]
-    partial class CapstoneDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180521033729_Initial entity models")]
+    partial class Initialentitymodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -9,17 +9,16 @@ namespace Capstone.Data
 {
     public class CapstoneDBContext : DbContext
     {
-        public DbSet<AutoMemo>AutoMemos  { get; set; }
-        public DbSet<MemoChoice>MemoChoices  { get; set; }
-        public DbSet<Provider>Providers  { get; set; }
-        public DbSet<BcbsPrefix>BcbsPrefixes  { get; set; }
-        public DbSet<Patient>Patients  { get; set; }
-        public DbSet<Store>Stores  { get; set; }
+        public CapstoneDBContext(DbContextOptions options) : base(options) { }
 
-public CapstoneDBContext(DbContextOptions<CapstoneDBContext> options)
-            : base(options)
-        {
-        }
+        public DbSet<Prefix> Prefixes { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+        public DbSet<ProviderNote> ProviderNotes { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Store> Stores { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<MemoOption> MemoOptions { get; set; }
+
 
 
     }

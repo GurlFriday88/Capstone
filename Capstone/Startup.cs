@@ -47,7 +47,7 @@ namespace OpticalOutletsHub
             {
                 var context = scope.ServiceProvider.GetService<CapstoneDBContext>();
                 context.Database.Migrate();
-                context.EnsureDatabaseSeeded();
+                
             }
 
             app.UseMvc(routes =>

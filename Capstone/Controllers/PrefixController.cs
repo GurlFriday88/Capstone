@@ -23,9 +23,9 @@ namespace Capstone.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IList<BcbsPrefix> bcbsPrefixes = context.BcbsPrefixes.Include(b => b.Provider).ToList();
+            IList<Prefix> Prefixes = context.Prefixes.Include(b => b.Provider).ToList();
 
-            return View(bcbsPrefixes);
+            return View(Prefixes);
         }
 
         //routes to add prefix view
@@ -41,18 +41,18 @@ namespace Capstone.Controllers
         [HttpPost]
         public IActionResult Add(AddPrefixViewModel addPrefixViewModel)
         {
-            Provider newProvider =
-                    context.Providers.Single(p => p.ID == addPrefixViewModel.PrefixID);
+            Provider selectedProvider =
+                    context.Providers.SingleOrDefault(p => p.ID == addPrefixViewModel.SelectedProvider);
             if (ModelState.IsValid)
             {
                 // Add the new Prefix to my existing Prefixes
-                BcbsPrefix newPrefix = new BcbsPrefix
+                Prefix newPrefix = new Prefix
                 {
-                    Prefix = addPrefixViewModel.Prefix,
-                    ProviderID = newProvider.ID
+                    Name = addPrefixViewModel.Prefix,
+                    ProviderID = selectedProvider.ID
                 };
 
-                context.BcbsPrefixes.Add(newPrefix); 
+                context.Prefixes.Add(newPrefix); 
                 context.SaveChanges(); 
 
                 return Redirect("/Prefix"); //sends user back to the home page
@@ -64,7 +64,7 @@ namespace Capstone.Controllers
         public IActionResult Remove()
         {
             ViewBag.title = "Remove Prefixes";
-            ViewBag.BcbsPrefixes = context.BcbsPrefixes.ToList(); //sends the user to the remove page showing all the prefises currently in db as option for deletion
+            ViewBag.BcbsPrefixes = context.Prefixes.ToList(); //sends the user to the remove page showing all the prefises currently in db as option for deletion
             return View();
         }
 
@@ -73,8 +73,8 @@ namespace Capstone.Controllers
         {
             foreach (int prefixId in prefixIds)
             {
-                BcbsPrefix thePrefix = context.BcbsPrefixes.Single(c => c.ID == prefixId); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
-                context.BcbsPrefixes.Remove(thePrefix); //query to delete the user selected prefix  
+                Prefix prefixToDelete = context.Prefixes.Single(c => c.ID == prefixId); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
+                context.Prefixes.Remove(prefixToDelete); //query to delete the user selected prefix  
             }
 
             context.SaveChanges(); // commits changes to the db

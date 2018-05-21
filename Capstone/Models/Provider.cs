@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,12 +10,12 @@ namespace Capstone.Models
     {
         public int ID { get; set; }
 
+        [Required]
         public string Name { get; set; }
-
-        public string PhoneNumber { get; set; }
 
         public string SubscriberNumber { get; set; }
 
+        [Range(0, 10)]
         public int PagesToSave { get; set; }
 
         public string SavedPagesDescription { get; set; }
@@ -25,10 +26,11 @@ namespace Capstone.Models
 
         public string MiscNotes { get; set; }
 
-        //Foreign Keys for patient and prefixes 
+        public virtual Contact Contact { get; set; }
 
-        public IList<Patient> PatientType { get; set; }
 
-        public IList<BcbsPrefix> BcbsPrefixes { get; set; }
+        public IEnumerable<Prefix> Prefixes { get; set; }
+
+
     }
 }

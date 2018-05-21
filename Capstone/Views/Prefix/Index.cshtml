@@ -1,5 +1,5 @@
 ﻿
-@model List<Capstone.Models.BcbsPrefix>
+@model List<Capstone.Models.Prefix>
 <!--  <h2>BCBS Prefix List</h2>
 
     <table class="table">
@@ -13,7 +13,7 @@
         @foreach (var prefix in Model)
     {
         <tr>
-            <td>@prefix.Prefix</td>
+            <td>@prefix.Name</td>
             <td>@prefix.Provider.Name</td>
             <td><a class= "btn btn-sm btn-primary" asp-controller="Prefix" asp-action ="Remove">Delete</a></td>
 

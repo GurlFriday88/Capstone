@@ -23,6 +23,15 @@ namespace Capstone.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            
+
+            return View();
+        }
+
+
+
+        public IActionResult ListAllPrefixes()
+        {
             IList<Prefix> Prefixes = context.Prefixes.Include(b => b.Provider).ToList();
 
             return View(Prefixes);
@@ -55,31 +64,36 @@ namespace Capstone.Controllers
                 context.Prefixes.Add(newPrefix); 
                 context.SaveChanges(); 
 
-                return Redirect("/Prefix"); //sends user back to the home page
+                return Redirect("ListAllPrefixes"); 
             }
 
             return View(addPrefixViewModel); //if user inout does not pass validation send user back to the homepage with the form
         }
 
-        public IActionResult Remove()
-        {
-            ViewBag.title = "Remove Prefixes";
-            ViewBag.BcbsPrefixes = context.Prefixes.ToList(); //sends the user to the remove page showing all the prefises currently in db as option for deletion
-            return View();
-        }
+        //public IActionResult Remove()
+        //{
+        //    ViewBag.title = "Remove Prefixes";
+        //    ViewBag.BcbsPrefixes = context.Prefixes.ToList(); //sends the user to the remove page showing all the prefises currently in db as option for deletion
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult Remove(int[] prefixIds)
+       
+        public IActionResult Delete(int id)
         {
-            foreach (int prefixId in prefixIds)
+            if (ModelState.IsValid)
             {
-                Prefix prefixToDelete = context.Prefixes.Single(c => c.ID == prefixId); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
+                Prefix prefixToDelete = context.Prefixes.SingleOrDefault(p => p.ID == id); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
                 context.Prefixes.Remove(prefixToDelete); //query to delete the user selected prefix  
+
+                context.SaveChanges(); // commits changes to the db
+
+                IList<Prefix>remainingPrefixes = context.Prefixes.Include(b => b.Provider).ToList();
+
+                return View("ListAllPrefixes", remainingPrefixes);
             }
 
-            context.SaveChanges(); // commits changes to the db
 
-            return Redirect("/Prefix");//sends the user back to the homepage
+            return View("ListAllPrefixes");//send the user back to the list
         }
     }
 

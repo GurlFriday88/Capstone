@@ -23,6 +23,7 @@
   
 
   <ItemGroup>
+    <Folder Include="Views\Provider\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   

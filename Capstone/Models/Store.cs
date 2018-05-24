@@ -10,7 +10,7 @@ namespace Capstone.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        
         public String Name { get; set; }
 
         public virtual Contact Contact { get; set; }

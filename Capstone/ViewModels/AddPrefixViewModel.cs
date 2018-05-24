@@ -24,12 +24,15 @@ namespace Capstone.ViewModels
 
         public IList<SelectListItem>Providers{ get; set; }
 
-        //constructors 
+        //constructor
 
         public AddPrefixViewModel()
         {
 
         }
+
+
+        //constructor for select list of providers 
 
         public AddPrefixViewModel(IEnumerable<Provider> providers)
         {

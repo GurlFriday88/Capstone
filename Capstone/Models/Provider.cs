@@ -10,12 +10,12 @@ namespace Capstone.Models
     {
         public int ID { get; set; }
 
-        [Required]
+       
         public string Name { get; set; }
 
         public string SubscriberNumber { get; set; }
 
-        [Range(0, 10)]
+        
         public int PagesToSave { get; set; }
 
         public string SavedPagesDescription { get; set; }
@@ -28,6 +28,7 @@ namespace Capstone.Models
 
         public virtual Contact Contact { get; set; }
 
+        public IEnumerable<Patient> Patients { get; set; }
 
         public IEnumerable<Prefix> Prefixes { get; set; }
 

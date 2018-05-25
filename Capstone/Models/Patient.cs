@@ -19,6 +19,6 @@ namespace Capstone.Models
 
         public string Exam { get; set; }
 
-        public virtual ProviderNote ProviderNote { get; set; }
+        //public virtual ProviderNote ProviderNote { get; set; }
     }
 }

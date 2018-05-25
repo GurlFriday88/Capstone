@@ -76,10 +76,20 @@ namespace Capstone.Controllers
                 };
                 context.Providers.Add(newProvider);
                 context.SaveChanges();
-                return Redirect("Detail");
+                return RedirectToAction("Detail");
             }
             return View("Add");
 
+
+        }
+
+
+
+        public IActionResult Edit()
+        {
+            ProviderNoteViewModel selectedNoteToUpdate = new ProviderNoteViewModel();
+
+            return View(selectedNoteToUpdate);
 
         }
 
@@ -91,9 +101,21 @@ namespace Capstone.Controllers
 
         //edit for provider notes
 
-        public IActionResult Edit()
+        public IActionResult Edit(ProviderNoteViewModel selectedNoteToUpdate)
         {
-            return View();
+            Provider updateNote = context.Providers.FirstOrDefault(u => u.ID == selectedNoteToUpdate.ID);
+
+            updateNote.Name = selectedNoteToUpdate.Name;
+            updateNote.SubscriberNumber = selectedNoteToUpdate.SubscriberNumber;
+            updateNote.PagesToSave = selectedNoteToUpdate.PagesToSave;
+            updateNote.SavedPagesDescription = selectedNoteToUpdate.SavedPagesDescription;
+            updateNote.Address = selectedNoteToUpdate.Address;
+            updateNote.BenefitRenewal = selectedNoteToUpdate.BenefitRenewal;
+            updateNote.AuthNote = selectedNoteToUpdate.AuthNote;
+            updateNote.MiscNotes = selectedNoteToUpdate.MiscNotes;
+            context.Providers.Update(updateNote);
+
+            return RedirectToAction("Detail", updateNote.ID);
         }
 
         //delete for provider notes

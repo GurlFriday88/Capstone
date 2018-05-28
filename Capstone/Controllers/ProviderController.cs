@@ -40,17 +40,18 @@ namespace Capstone.Controllers
         //get provider note
         public IActionResult Add()
         {
-            AddProviderNoteViewModel addProviderViewModel = new AddProviderNoteViewModel(context.Providers.Include(p => p.Prefixes).Include(p => p.Patients).Include(p => p.Contact).ToList());
+            AddProviderNoteViewModel addProviderViewModel = new AddProviderNoteViewModel();
             return View(addProviderViewModel);
 
         }
 
         //post provider note
+        [HttpPost]
         public IActionResult Add(AddProviderNoteViewModel addProviderViewModel)
         {
             //grab the checkbox or select items from view model and find their matches in db
             IList<Prefix> selectedPrefixes =
-                   context.Prefixes.Where(p => p.ID == addProviderViewModel.SelectedProvider).ToList();
+                   context.Prefixes.Where(p => p.ID == addProviderViewModel.SelectedProvider).ToList();  //change ling query to any 
 
             Contact contactItems = context.Contacts.FirstOrDefault(c => c.PhoneNumber == addProviderViewModel.PhoneNumber);
 
@@ -78,13 +79,13 @@ namespace Capstone.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Detail");
             }
-            return View("Add");
+            return View();
 
 
         }
 
 
-
+        
         public IActionResult Edit()
         {
             ProviderNoteViewModel selectedNoteToUpdate = new ProviderNoteViewModel();
@@ -100,7 +101,7 @@ namespace Capstone.Controllers
 
 
         //edit for provider notes
-
+        [HttpPost]
         public IActionResult Edit(ProviderNoteViewModel selectedNoteToUpdate)
         {
             Provider updateNote = context.Providers.FirstOrDefault(u => u.ID == selectedNoteToUpdate.ID);

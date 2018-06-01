@@ -23,9 +23,9 @@ namespace Capstone.Controllers
         //Home for provider notes
         public IActionResult Index()
         {
-            IList<Provider> Providers = context.Providers.ToList();
+            //IList<Provider> Providers = context.Providers.ToList();
 
-            return View(Providers);
+            return View();
         }
 
         //for detail view of note

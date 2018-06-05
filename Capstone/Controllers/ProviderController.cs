@@ -53,7 +53,7 @@ namespace Capstone.Controllers
             IList<Prefix> selectedPrefixes =
                    context.Prefixes.Where(p => p.ID == addProviderViewModel.SelectedProvider).ToList();  //change ling query to any 
 
-            Contact contactItems = context.Contacts.FirstOrDefault(c => c.PhoneNumber == addProviderViewModel.PhoneNumber);
+           
 
             IList<Patient> selectedPatients = context.Patients.Where(p => p.ID == addProviderViewModel.SelectedPatient).ToList();
             if (ModelState.IsValid)
@@ -65,13 +65,10 @@ namespace Capstone.Controllers
                     SubscriberNumber = addProviderViewModel.SubscriberNumber,
                     PagesToSave = addProviderViewModel.PagesToSave,
                     SavedPagesDescription = addProviderViewModel.SavedPagesDescription,
-                    PhoneNumber = contactItems.PhoneNumber,
-                    Address = contactItems.Address,
                     BenefitRenewal = addProviderViewModel.BenefitRenewal,
                     AuthNote = addProviderViewModel.AuthNote,
                     MiscNotes = addProviderViewModel.MiscNotes,
-                    Prefixes = selectedPrefixes,
-                    Patients = selectedPatients
+                   
 
 
                 };
@@ -110,7 +107,6 @@ namespace Capstone.Controllers
             updateNote.SubscriberNumber = selectedNoteToUpdate.SubscriberNumber;
             updateNote.PagesToSave = selectedNoteToUpdate.PagesToSave;
             updateNote.SavedPagesDescription = selectedNoteToUpdate.SavedPagesDescription;
-            updateNote.Address = selectedNoteToUpdate.Address;
             updateNote.BenefitRenewal = selectedNoteToUpdate.BenefitRenewal;
             updateNote.AuthNote = selectedNoteToUpdate.AuthNote;
             updateNote.MiscNotes = selectedNoteToUpdate.MiscNotes;

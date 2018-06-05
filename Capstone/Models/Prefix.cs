@@ -11,7 +11,7 @@ namespace Capstone.Models
 
         public int ID { get; set; }
 
-        [Required]
+        
         public string Name { get; set; }
 
         public virtual Provider Provider { get; set; }

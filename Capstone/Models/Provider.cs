@@ -15,7 +15,10 @@ namespace Capstone.Models
 
         public string PhoneNumber { get; set; }
 
-        public string Address { get; set; }
+        public string EligibilityExpiry { get; set; }
+
+        public string Plan { get; set; }
+
 
         public string SubscriberNumber { get; set; }
 
@@ -30,12 +33,7 @@ namespace Capstone.Models
 
         public string MiscNotes { get; set; }
 
-        public virtual Contact Contact { get; set; }
-
-        public IEnumerable<Patient> Patients { get; set; }
-
-        public IEnumerable<Prefix> Prefixes { get; set; }
-
+        
 
     }
 }

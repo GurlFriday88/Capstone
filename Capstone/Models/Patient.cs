@@ -10,7 +10,7 @@ namespace Capstone.Models
     {
         public int ID { get; set; }
 
-        [Required]
+       
         public string Type { get; set; }
 
         public string Frames { get; set; }
@@ -19,6 +19,8 @@ namespace Capstone.Models
 
         public string Exam { get; set; }
 
-        //public virtual ProviderNote ProviderNote { get; set; }
+        public int ProviderID { get; set; }
+
+
     }
 }

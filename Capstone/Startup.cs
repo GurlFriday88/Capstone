@@ -43,12 +43,12 @@ namespace OpticalOutletsHub
 
             app.UseStaticFiles();
             //confirguration for database seeding of test data
-            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = scope.ServiceProvider.GetService<CapstoneDBContext>();
-                context.Database.Migrate();
+            //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    var context = scope.ServiceProvider.GetService<CapstoneDBContext>();
+            //    context.Database.Migrate();
                 
-            }
+            //}
 
             app.UseMvc(routes =>
             {

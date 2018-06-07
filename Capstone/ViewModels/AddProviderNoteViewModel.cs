@@ -7,7 +7,7 @@ namespace Capstone.ViewModels
 {
     public class AddProviderNoteViewModel
     {
-        public int ID { get; set; }
+        public int ProviderID { get; set; }
 
         public string Name { get; set; }
 
@@ -65,7 +65,7 @@ namespace Capstone.ViewModels
             {
                 Providers.Add(new SelectListItem
                 {
-                    Value = item.ID.ToString(),
+                    Value = item.ProviderID.ToString(),
                     Text = item.Name.ToString()
 
 
@@ -84,7 +84,7 @@ namespace Capstone.ViewModels
             {
                 Patients.Add(new SelectListItem
                 {
-                    Value = item.ID.ToString(),
+                    Value = item.PatientID.ToString(),
                     Text = item.Type.ToString()
 
 

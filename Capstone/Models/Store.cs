@@ -8,7 +8,7 @@ namespace Capstone.Models
 {
     public class Store
     {
-        public int ID { get; set; }
+        public int StoreID { get; set; }
 
        
         [Required(ErrorMessage = "Store Name Required!")]

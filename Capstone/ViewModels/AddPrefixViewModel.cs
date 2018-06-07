@@ -11,7 +11,7 @@ namespace Capstone.ViewModels
     public class AddPrefixViewModel
     {
 
-        public int ID { get; set; }
+        public int PrefixID { get; set; }
 
         [Required]
         [Display(Name ="Alpha Prefix")]
@@ -44,7 +44,7 @@ namespace Capstone.ViewModels
             {
                 Providers.Add(new SelectListItem
                 {
-                    Value = item.ID.ToString(),
+                    Value = item.ProviderID.ToString(),
                     Text = item.Name.ToString()
 
 

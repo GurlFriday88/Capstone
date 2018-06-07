@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Capstone.ViewModels
 {
-    public class StoreViewModel
+    public class ContactViewModel
     {
-        public int ID { get; set; }
+        public int StoreID { get; set; }
 
         public string Name { get; set; }
 

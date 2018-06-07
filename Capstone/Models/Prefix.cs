@@ -9,8 +9,8 @@ namespace Capstone.Models
 {
     public class Prefix
     {
-
-        public int ID { get; set; }
+        [Key]
+        public int PrefixID { get; set; }
 
         [ForeignKey("Provider")]
         public int ProviderID { get; set; }

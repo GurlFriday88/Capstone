@@ -10,13 +10,13 @@ namespace Capstone.Models
     public class Patient
     {   
         [Key]
-        public int ID { get; set; }
+        public int PatientID { get; set; }
 
 
         [ForeignKey("Provider")]
         public int ProviderID { get; set; }
 
-        public virtual Provider Provider { get; set; }
+        //public virtual Provider Provider { get; set; }
 
 
 

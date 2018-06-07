@@ -11,7 +11,7 @@ namespace Capstone.Models
     {
        
         [Key]
-        public int ID { get; set; }
+        public int ProviderID { get; set; }
 
         [ForeignKey("Prefix")]
         public int PrefixID { get; set; }

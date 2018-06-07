@@ -16,7 +16,6 @@ namespace Capstone.Models
         [ForeignKey("Provider")]
         public int ProviderID { get; set; }
 
-        //public virtual Provider Provider { get; set; }
 
 
 

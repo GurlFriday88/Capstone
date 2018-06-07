@@ -15,14 +15,14 @@ namespace Capstone.Models
 
         [ForeignKey("Prefix")]
         public int PrefixID { get; set; }
-        public virtual Prefix Prefix { get; set; }
+        
 
         [ForeignKey("Patient")]
         public int PatientID { get; set; }
-        public virtual Patient Patient { get; set; }
+        
 
-        public virtual List<Prefix> Prefixes { get; set; }
-        public virtual List<Patient> Patients { get; set; }
+        public virtual IList<Prefix> Prefixes { get; set; }
+        public virtual IList<Patient> Patients { get; set; }
 
         [Required(ErrorMessage ="Enter A Name For Your Provider")]
         public string Name { get; set; }

@@ -12,7 +12,7 @@ namespace Capstone.Controllers
 {
     public class PrefixController : Controller
     {
-        //home
+        //access to database
         private CapstoneDBContext context;
 
         public PrefixController(CapstoneDBContext dbContext)
@@ -20,7 +20,7 @@ namespace Capstone.Controllers
             context = dbContext;
         }
 
-        // GET: /<controller>/
+        //home page for prefixes
         public IActionResult Index()
         {
 
@@ -30,11 +30,11 @@ namespace Capstone.Controllers
 
 
 
-        public IActionResult ListAllPrefixes()
+        public IActionResult ListPrefixes()
         {
-            IList<Prefix> Prefixes = context.Prefixes.Include(b => b.Provider).ToList();
+            IList<Prefix> allPrefixes = context.Prefixes.Include(b => b.Provider).ToList();
 
-            return View(Prefixes);
+            return View(allPrefixes);
         }
 
         //routes to add prefix view
@@ -50,8 +50,10 @@ namespace Capstone.Controllers
         [HttpPost]
         public IActionResult Add(AddPrefixViewModel addPrefixViewModel)
         {
+            //variable to hold provider id user selected from dropdown in view 
             Provider selectedProvider =
                     context.Providers.SingleOrDefault(p => p.ProviderID == addPrefixViewModel.SelectedProvider);
+            //checks to ensure form was filled 
             if (ModelState.IsValid)
             {
                 // Add the new Prefix to my existing Prefixes
@@ -64,10 +66,10 @@ namespace Capstone.Controllers
                 context.Prefixes.Add(newPrefix);
                 context.SaveChanges();
 
-                return Redirect("ListAllPrefixes");
+                return Redirect("ListPrefixes");
             }
 
-            return View(addPrefixViewModel); //if user inout does not pass validation send user back to the homepage with the form
+            return View(addPrefixViewModel); //if user input does not pass validation send user back to form
         }
 
 
@@ -77,18 +79,19 @@ namespace Capstone.Controllers
         {
             if (ModelState.IsValid)
             {
-                Prefix prefixToDelete = context.Prefixes.SingleOrDefault(p => p.PrefixID == id); //thePrefix stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
+                //variable stores the prefix found in the db  that matches the id of the prefix user selected for deletion 
+                Prefix prefixToDelete = context.Prefixes.SingleOrDefault(p => p.PrefixID == id); 
                 context.Prefixes.Remove(prefixToDelete); //query to delete the user selected prefix  
 
                 context.SaveChanges(); // commits changes to the db
 
                 IList<Prefix> remainingPrefixes = context.Prefixes.Include(b => b.Provider).ToList();
 
-                return View("ListAllPrefixes", remainingPrefixes);
+                return View("ListPrefixes", remainingPrefixes);
             }
 
 
-            return View("ListAllPrefixes");//send the user back to the list
+            return View("ListPrefixes");//send the user back to the list
         }
     }
 

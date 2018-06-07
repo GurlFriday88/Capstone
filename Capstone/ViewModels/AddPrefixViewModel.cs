@@ -13,11 +13,9 @@ namespace Capstone.ViewModels
 
         public int PrefixID { get; set; }
 
-        [Required]
-        [Display(Name ="Alpha Prefix")]
-        public string Prefix { get; set; }
+        public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Select A Provider From List!")]
         public int SelectedProvider { get; set; }
 
         //List of providers

@@ -7,6 +7,35 @@
 
 
                 <h3 class="box-title">@Model.Name</h3>
+                <div class="btn-group">
+                   
+
+                        <a asp-controller="Provider" asp-action="Edit" asp-route-id="@Model.ProviderID"  class="btn btn-default btn-sm bg-aqua-gradient">
+                            <i class="fa fa-edit">
+
+                            </i>
+
+                        </a>
+
+
+             
+
+
+                    <form asp-controller="Provider" asp-action="Delete" asp-route-id="@Model.ProviderID">
+
+
+                        <button type="submit" value="Delete" class="btn btn-default btn-sm bg-yellow" onclick="return confirm('Are you sure you want to delete @Model.Name ?');">
+                            <i class="fa fa-trash">
+
+                            </i>
+                           
+                        </button>
+                    </form>
+                    
+
+                        
+
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

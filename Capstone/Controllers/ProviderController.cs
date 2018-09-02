@@ -73,7 +73,7 @@ namespace Capstone.Controllers
                 };
                 context.Providers.Add(newProvider);
                 context.SaveChanges();
-                return RedirectToAction("Detail");
+                return RedirectToAction("index");
             }
             return View();
 
@@ -127,11 +127,11 @@ namespace Capstone.Controllers
 
                 IList<Provider> remainingProviders = context.Providers.ToList();
 
-                return View("ListProvider", remainingProviders);
+                return View("Index", remainingProviders);
             }
 
 
-            return View("ListProvider");//send the user back to the list
+            return View("Index");//send the user back to the list
         }
 
     }

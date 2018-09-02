@@ -23,13 +23,14 @@ namespace Capstone.Controllers
         {
             IList<Provider> Providers = context.Providers.ToList();
 
-            return View();
+            return View(Providers);
         }
 
         // GET: Provider/Details/5
-        public IActionResult Details(int id)
+        public IActionResult Detail(int id)
         {
             Provider providerToView = context.Providers.SingleOrDefault(p => p.ProviderID == id);
+
             return View(providerToView);
         }
 
@@ -59,6 +60,7 @@ namespace Capstone.Controllers
                 Provider newProvider = new Provider
                 {
                     Name = addProviderViewModel.Name,
+                    PhoneNumber= addProviderViewModel.PhoneNumber,
                     SubscriberNumber = addProviderViewModel.SubscriberNumber,
                     PagesToSave = addProviderViewModel.PagesToSave,
                     SavedPagesDescription = addProviderViewModel.SavedPagesDescription,

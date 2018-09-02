@@ -1,4 +1,4 @@
-﻿
+﻿@model Capstone.Models.Provider
 <div class="row">
 
     <div class="col-sm-12">
@@ -6,23 +6,23 @@
             <div class="box-header with-border bg-red-gradient">
 
 
-                <h3 class="box-title">Provider Name</h3>
+                <h3 class="box-title">@Model.Name</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
                 <dl class="col-sm-4 dl-horizontal">
                     <dt>Phone Number:</dt>
-                    <dd>813-888-1234</dd>
+                    <dd>@Model.PhoneNumber</dd>
                     <dt>Eligibility Expiry: </dt>
-                    <dd>End of the month.</dd>
+                    <dd>@Model.EligibilityExpiry</dd>
                     <dt>Benefit Renewal:</dt>
                     <dd>
-                        Benefits renew annualy.
+                        @Model.BenefitRenewal
                     </dd>
 
                     <dt>Plan:</dt>
-                    <dd>Make sure plan number matches plan shown in Argus portal.</dd>
+                    <dd>@Model.SubscriberNumber</dd>
 
 
                 </dl>
@@ -31,25 +31,26 @@
 
                 <dl class="col-sm-4 dl-horizontal">
                     <dt>Pages to save:</dt>
-                    <dd>2</dd>
+                    <dd>@Model.PagesToSave</dd>
                     <dt>What to save:</dt>
-                    <dd>Plan & Benefits pages</dd>
+                    <dd>@Model.SavedPagesDescription</dd>
                     <dt>Auth Note:</dt>
-                    <dd>"See tree for benefits.</dd>
+                    <dd>@Model.AuthNote</dd>
 
                 </dl>
 
 
-                <dl class="col-sm-4 dl-horizontal">
+                @*<dl class="col-sm-4 dl-horizontal">
                     <dt>Associated Prefixes:</dt>
-                    <dd>XJGH</dd>
-                    <dd>JBSG</dd>
-                    <dd>VMYH</dd>
-                    <dd>DTS</dd>
-                    <dd>VMAH</dd>
+                    @foreach(Prefix prefix in Model.Prefixes) { 
+
+                        <dd>@prefix.Name</dd>
+                    }
+                    
+                   
 
 
-                </dl>
+                </dl>*@
 
 
                 <!-- /.box-body -->
@@ -126,28 +127,9 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <lead>
-                    <b>Instructions for use:</b>
-                </lead>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, aperiam!</p>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet</li>
-                    <li>Consectetur adipiscing elit</li>
-                    <li>Integer molestie lorem at massa</li>
-                    <li>Facilisis in pretium nisl aliquet</li>
-                    <li>
-                        Nulla volutpat aliquam velit
-                        <ul>
-                            <li>Phasellus iaculis neque</li>
-                            <li>Purus sodales ultricies</li>
-                            <li>Vestibulum laoreet porttitor sem</li>
-                            <li>Ac tristique libero volutpat at</li>
-                        </ul>
-                    </li>
-                    <li>Faucibus porta lacus fringilla vel</li>
-                    <li>Aenean sit amet erat nunc</li>
-                    <li>Eget porttitor lorem</li>
-                </ul>
+                
+                <p>@Model.MiscNotes</p>
+               
             </div>
             <!-- /.box-body -->
 

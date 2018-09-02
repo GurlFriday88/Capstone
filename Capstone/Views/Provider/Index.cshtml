@@ -1,20 +1,27 @@
-﻿<div class="row">
+﻿@model IList<Capstone.Models.Provider>
+
+
+<div class="row">
     <h1 class="display-2 text-center margin-bottom">Select a Provider to view it's note</h1>
 </div>
 
 <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
+
+    @foreach (Provider provider in Model) {
+        
+        
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
         <div class="row">
             <div class="col-sm-3 offset-sm-1">
                 <div class="small-box bg-blue-gradient">
                     <div class="inner text-center">
-                        <h4>Premier Eye Care</h4>
+                        <h4>@provider.Name</h4>
 
-                        <!-- <p>Premier Eye Care</p> -->
+                        
                     </div>
 
-                    <a href="#" class="small-box-footer">
+                    <a class="small-box-footer"asp-action="Detail" asp-route-id="@provider.ProviderID">
                         More info
                         <i class="fa fa-arrow-circle-right"></i>
                     </a>
@@ -23,7 +30,9 @@
         </div>
 
 
-    </div>
+        </div> 
+    }
+    
     <div class="col-sm-1"></div>
 
 </div>

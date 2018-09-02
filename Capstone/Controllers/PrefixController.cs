@@ -59,7 +59,7 @@ namespace Capstone.Controllers
                 // Add the new Prefix to my existing Prefixes
                 Prefix newPrefix = new Prefix
                 {
-                    Name = addPrefixViewModel.Prefix,
+                    Name = addPrefixViewModel.Name,
                     ProviderID = selectedProvider.ProviderID
                 };
 

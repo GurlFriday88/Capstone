@@ -29,7 +29,7 @@ namespace Capstone.Controllers
         }
 
         // GET: Contact/Create
-        public IActionResult Create()
+        public IActionResult Add()
         {
             return View();
         }
@@ -37,7 +37,7 @@ namespace Capstone.Controllers
         // POST: Contact/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Add(IFormCollection collection)
         {
             try
             {

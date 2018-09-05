@@ -1,0 +1,268 @@
+﻿@model Capstone.ViewModels.ProviderViewModel
+
+<h2>@Model.Name</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <!-- box beginning -->
+            <div class="box box-solid box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Create Provider</h3>
+                    <div class="box-tools pull-right">
+                        <!-- Buttons, labels, and many other things can be placed here! -->
+                        <!-- Here is a label for example -->
+
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+                    <!-- form start -->
+                    <form asp-controller="Provider" asp-action="Edit" method="post">
+                        @Html.HiddenFor(model => model.ProviderID)
+
+                        <h2>Information</h2>
+                        <div class=" information form-row">
+                            <div class="form-group col-sm-6">
+
+                                <label asp-for="Name" class="control-label ">Name</label>
+                            </div>
+
+                            <div>
+                                <input type="text" class="form-control" asp-for="Name" placeholder="Enter name">
+
+
+
+                            </div>
+                            <div class=" form-group col-sm-6">
+                                <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                                <div>
+                                    <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Enter Phone number">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <h2>Required Documents</h2>
+
+                        <div class="requiredDoc form-row">
+                            <div class=" form-group col-sm-2">
+
+                                <label asp-for="PagesToSave" class="control-label">Pages to save</label>
+                                <input class="form-control" type="text" asp-for="PagesToSave" name="Savedpages" value="1" />
+
+                            </div>
+                            <div class="form-group col-sm-10">
+                                <label asp-for="SavedPagesDescription" class="control-label">Pages Description</label>
+                                <textarea class="form-control" asp-for="SavedPagesDescription" rows="2">Enter a description of each saved page</textarea>
+                            </div>
+                        </div>
+
+                        <h2>Renewals</h2>
+                        <div class=" renewal form-row">
+                            <div class="form-group col-sm-6">
+                                <label asp-for="SubscriberNumber" class="control-label ">Subscriber ID</label>
+
+                                <div>
+                                    <input type="text" class="form-control" asp-for="SubscriberNumber" placeholder="E.g P000000">
+
+                                </div>
+                            </div>
+                            <div class=" form-group col-sm-6">
+                                <label asp-for="BenefitRenewal" class="control-label">Benefit Renewal</label>
+                                <div>
+                                    <input type="text" class="form-control" asp-for="BenefitRenewal" placeholder="E.g Every January">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <h2>Notes</h2>
+
+                        <div class=" Notes form-row">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tab_1" data-toggle="tab" aria-expanded="true">Auth Note</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tab_2" data-toggle="tab" aria-expanded="false">Misc Notes</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <textarea class="form-control" asp-for="AuthNote" rows="5">Add your Auth Note here</textarea>
+
+
+
+
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+
+                                        <textarea class="form-control" asp-for="MiscNotes" rows="5">Add your Misc notes here</textarea>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <input type="submit" class="btn btn-info" value="Submit">
+                            <a href="#" class="btn btn-info" role="button">Cancel</a>
+
+
+                        </div>
+
+                    </form>
+
+                        
+
+                        
+
+                       
+                        @*<h2>Eligibility</h2>
+                    <div class=" eligibility form-group row">
+
+                        <label asp-for="Patient" class="col-sm-2 col-form-label">Adults</label>
+
+
+
+                        <div class="col-sm-10">
+
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label ">Exam:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+
+                                    </select>
+
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label ">Frames:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label">Lenses:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group col-sm-3 ">
+                                    <label for="sel1" class="control-label">Contacts:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>*@
+
+
+                        @*</div>*@
+
+
+
+
+                        @*<div class=" eligibility form-group row">
+
+                        <label for="#" class="col-sm-2 col-form-label">Kids</label>
+
+                        <div class="col-sm-10">
+
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label ">Exam:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+
+                                    </select>
+
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label ">Frames:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group col-sm-3">
+                                    <label for="sel1" class="control-label">Lenses:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group col-sm-3 ">
+                                    <label for="sel1" class="control-label">Contacts:</label>
+                                    <select class="form-control" id="sel1">
+                                        <option>Every 12 Months</option>
+                                        <option>Every 24 Months</option>
+                                        <option>None</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>*@
+
+
+                       
+                        <!-- /.box-body -->
+               
+
+
+
+
+
+
+                <!-- box-footer -->
+            </div>
+
+    
+
+
+        </div>
+        <!-- /.box -->
+
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+</div>
+
+
+
+
+
+

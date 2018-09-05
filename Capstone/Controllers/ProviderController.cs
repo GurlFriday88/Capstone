@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Capstone.Data;
 using Capstone.Models;
 using Capstone.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Capstone.Controllers
@@ -84,7 +81,22 @@ namespace Capstone.Controllers
         // GET: Provider/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+
+            
+            Provider matchingProvider = context.Providers.SingleOrDefault(p => p.ProviderID == id);
+            ProviderViewModel providerToEdit = new ProviderViewModel();
+
+            providerToEdit.ProviderID = matchingProvider.ProviderID;
+            providerToEdit.Name = matchingProvider.Name;
+            providerToEdit.PhoneNumber = matchingProvider.PhoneNumber;
+            providerToEdit.PagesToSave = matchingProvider.PagesToSave;
+            providerToEdit.SubscriberNumber = matchingProvider.SubscriberNumber;
+            providerToEdit.SavedPagesDescription = matchingProvider.SavedPagesDescription;
+            providerToEdit.BenefitRenewal = matchingProvider.BenefitRenewal;
+            providerToEdit.AuthNote = matchingProvider.AuthNote;
+            providerToEdit.MiscNotes = matchingProvider.MiscNotes;
+
+            return View(providerToEdit);
         }
 
         // POST: Provider/Edit/5
@@ -92,7 +104,9 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(ProviderViewModel selectedNoteToUpdate)
         {
-            Provider updateNote = context.Providers.FirstOrDefault(u => u.ProviderID == selectedNoteToUpdate.ProviderID);
+           
+
+            Provider updateNote = context.Providers.SingleOrDefault(u => u.ProviderID == selectedNoteToUpdate.ProviderID);
 
             updateNote.Name = selectedNoteToUpdate.Name;
             updateNote.SubscriberNumber = selectedNoteToUpdate.SubscriberNumber;
@@ -102,16 +116,13 @@ namespace Capstone.Controllers
             updateNote.AuthNote = selectedNoteToUpdate.AuthNote;
             updateNote.MiscNotes = selectedNoteToUpdate.MiscNotes;
             context.Providers.Update(updateNote);
+            context.SaveChanges();
 
-            return RedirectToAction("Detail", updateNote.ProviderID);
+            return RedirectToAction("Detail", new { id = selectedNoteToUpdate.ProviderID});
         }
 
 
-        // GET: Provider/Delete/5
-        //public IActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        
 
         // POST: Provider/Delete/5
         [HttpPost]

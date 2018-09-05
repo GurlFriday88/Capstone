@@ -1,12 +1,14 @@
 ﻿using Capstone.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Capstone.ViewModels
 {
     public class ProviderViewModel
     {
-
+        
+        [Key]
         public int ProviderID { get; set; }
 
         public string Name { get; set; }

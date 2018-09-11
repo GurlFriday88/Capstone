@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.Data;
+using Capstone.Models;
+using Capstone.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +18,24 @@ namespace Capstone.Controllers
         {
             context = dbContext;
         }
-        // GET: Contact
+        
+
         public IActionResult Index()
         {
-            return View();
+
+            IList<Provider> allProviders = context.Providers.ToList();
+
+            IList<Store> allStores = context.Stores.ToList();
+
+            ContactViewModel allContacts = new ContactViewModel();
+            allContacts.Providers = allProviders;
+            allContacts.Stores = allStores;
+   
+            return View (allContacts);
         }
+
+        
+       
 
         // GET: Contact/Details/5
         public IActionResult Details(int id)
@@ -28,73 +43,110 @@ namespace Capstone.Controllers
             return View();
         }
 
+
+
+
         // GET: Contact/Create
+       
         public IActionResult Add()
         {
-            return View();
+            ContactViewModel addContactViewModel = new ContactViewModel();
+            return View(addContactViewModel);
+
         }
 
         // POST: Contact/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add(IFormCollection collection)
+        public IActionResult Add( ContactViewModel contactViewModel)
         {
-            try
+            
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                // Add the new store contact 
+                Store newStore = new Store
+                {
+                    Name = contactViewModel.StoreModel.Name,
+                    Address = contactViewModel.StoreModel.Address,
+                    PhoneNumber = contactViewModel.StoreModel.PhoneNumber,
+                    
+    
+                };
+                context.Stores.Add(newStore);
+                context.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return View();
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
         }
 
         // GET: Contact/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+
+
+            Store matchingStore= context.Stores.SingleOrDefault(m => m.StoreID == id);
+            ContactViewModel storeToEdit = new ContactViewModel();
+
+            storeToEdit.StoreModel.StoreID = matchingStore.StoreID;
+            storeToEdit.StoreModel.Name = matchingStore.Name;
+            storeToEdit.StoreModel.PhoneNumber = matchingStore.PhoneNumber;
+            storeToEdit.StoreModel.Address = matchingStore.Address;
+
+
+            return View(storeToEdit);
+
         }
 
-        // POST: Contact/Edit/5
+
+
+
+
+
+
+        // POST: contact/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(ContactViewModel contactToUpdate)
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+            Store updateStore = context.Stores.SingleOrDefault(u => u.StoreID == contactToUpdate.StoreModel.StoreID);
+
+            updateStore.Name = contactToUpdate.StoreModel.Name;
+            updateStore.PhoneNumber = contactToUpdate.StoreModel.PhoneNumber;
+            updateStore.Address = contactToUpdate.StoreModel.Address;
+           
+            context.Stores.Update(updateStore);
+            context.SaveChanges();
+
+            return RedirectToAction("index");
         }
 
-        // GET: Contact/Delete/5
+
+
+
+        // POST: Provider/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Store storeToDelete = context.Stores.SingleOrDefault(s => s.StoreID == id);
+                context.Stores.Remove(storeToDelete); //query to delete the user selected provider  
+
+                context.SaveChanges(); // commits changes to the db
+
+               
+
+                return View("Index");
+            }
+
+
+            return View("Index");//send the user back to the list
         }
 
-        // POST: Contact/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

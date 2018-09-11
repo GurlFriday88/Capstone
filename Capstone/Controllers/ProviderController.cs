@@ -45,12 +45,13 @@ namespace Capstone.Controllers
         public IActionResult Add(AddProviderNoteViewModel addProviderViewModel)
         {
             //grab the checkbox or select items from view model and find their matches in db
-            IList<Prefix> selectedPrefixes =
-                   context.Prefixes.Where(p => p.PrefixID == addProviderViewModel.SelectedProvider).ToList();  //change ling query to any 
+            //IList<Prefix> selectedPrefixes =
+            //       context.Prefixes.Where(p => p.PrefixID == addProviderViewModel.SelectedProvider).ToList();  //change ling query to any 
 
+            //IList<Prefix> matchingPrefixes = 
+            //    context.Prefixes.Where(p => p.ProviderID == addProviderViewModel.ProviderID).ToList();
 
-
-            IList<Patient> selectedPatients = context.Patients.Where(p => p.PatientID == addProviderViewModel.SelectedPatient).ToList();
+            //IList<Patient> selectedPatients = context.Patients.Where(p => p.PatientID == addProviderViewModel.SelectedPatient).ToList();
             if (ModelState.IsValid)
             {
                 // Add the new provider 
@@ -64,6 +65,7 @@ namespace Capstone.Controllers
                     BenefitRenewal = addProviderViewModel.BenefitRenewal,
                     AuthNote = addProviderViewModel.AuthNote,
                     MiscNotes = addProviderViewModel.MiscNotes,
+                    
 
 
 
@@ -82,22 +84,34 @@ namespace Capstone.Controllers
         public IActionResult Edit(int id)
         {
 
-            
-            Provider matchingProvider = context.Providers.SingleOrDefault(p => p.ProviderID == id);
-            ProviderViewModel providerToEdit = new ProviderViewModel();
 
-            providerToEdit.ProviderID = matchingProvider.ProviderID;
-            providerToEdit.Name = matchingProvider.Name;
-            providerToEdit.PhoneNumber = matchingProvider.PhoneNumber;
-            providerToEdit.PagesToSave = matchingProvider.PagesToSave;
-            providerToEdit.SubscriberNumber = matchingProvider.SubscriberNumber;
-            providerToEdit.SavedPagesDescription = matchingProvider.SavedPagesDescription;
-            providerToEdit.BenefitRenewal = matchingProvider.BenefitRenewal;
-            providerToEdit.AuthNote = matchingProvider.AuthNote;
-            providerToEdit.MiscNotes = matchingProvider.MiscNotes;
+            Provider matchingProvider = context.Providers.SingleOrDefault(p => p.ProviderID == id);
+            ProviderViewModel providerToEdit = new ProviderViewModel
+            {
+
+                ProviderID = matchingProvider.ProviderID,
+                Name = matchingProvider.Name,
+                PhoneNumber = matchingProvider.PhoneNumber,
+                PagesToSave = matchingProvider.PagesToSave,
+                SubscriberNumber = matchingProvider.SubscriberNumber,
+                SavedPagesDescription = matchingProvider.SavedPagesDescription,
+                BenefitRenewal = matchingProvider.BenefitRenewal,
+                AuthNote = matchingProvider.AuthNote,
+                MiscNotes = matchingProvider.MiscNotes
+
+            };
+
+
 
             return View(providerToEdit);
+
         }
+        
+
+
+
+
+
 
         // POST: Provider/Edit/5
         [HttpPost]

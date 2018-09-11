@@ -1,89 +1,18 @@
-﻿<div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#tab_1" data-toggle="tab" aria-expanded="true">Stores</a>
-                </li>
-                <li class="">
-                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Providers</a>
-                </li>
-
-                <li class="pull-right">
-                    <a href="#" class="text-muted">
-                        <i class="fa fa-pencil-square"></i>
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
-                    <b>Store Listings:</b>
-
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th>Store</th>
-                                <th>Phone</th>
-                                <th>Fax</th>
-                                <th>Address</th>
-
-                            </tr>
-                            <tr>
-                                <td>101</td>
-                                <td>813-629-6344</td>
-                                <td>813-222-2222</td>
-                                <td>5609 Johns Road Tampa Fl 33612</td>
-
-
-                            </tr>
-                            <tr>
-                                <td>50</td>
-                                <td>813-629-6344</td>
-                                <td>813-222-2222</td>
-                                <td>5609 Johns Road Tampa Fl 33612</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
-                    <b> Provider Listings:</b>
-
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-
-
-                            </tr>
-                            <tr>
-                                <td>Argus</td>
-                                <td>813-222-2222</td>
+﻿@model Capstone.ViewModels.ContactViewModel
 
 
 
-                            </tr>
-                            <tr>
-                                <td>Eyequest</td>
-                                <td>813-222-1234</td>
-                            </tr>
+@foreach (Provider item in Model.Providers)
+{
 
-                            <tr>
-                                <td>Premier Eye Care</td>
-                                <td>813-222-4567</td>
-                            </tr>
+    <p>@item.PhoneNumber</p>
 
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.tab-pane -->
+}
 
-            </div>
-            <!-- /.tab-content -->
-        </div>
-    </div>
-    <div class="col-sm-1"></div>
-</div>
+@*@foreach (Store item in Model.Stores)
+{
+
+    <p>@item.PhoneNumber</p>
+
+}*@
+

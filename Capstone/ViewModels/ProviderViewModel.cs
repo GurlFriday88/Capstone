@@ -57,24 +57,24 @@ namespace Capstone.ViewModels
 
         }
 
-        //public ProviderViewModel(IEnumerable<Prefix> prefix)
-        //{
-        //    Prefixes = new List<SelectListItem>();
+        public ProviderViewModel(IEnumerable<Prefix> prefix)
+        {
+            Prefixes = new List<SelectListItem>();
 
-        //    // <option value="0">Hard</option>
+            // <option value="0">Hard</option>
 
-        //    foreach (Prefix item in prefix)
-        //    {
-        //        Prefixes.Add(new SelectListItem
-        //        {
-        //            Value = item.PrefixID.ToString(),
-        //            Text = item.Name.ToString()
+            foreach (Prefix item in prefix)
+            {
+                Prefixes.Add(new SelectListItem
+                {
+                    Value = item.PrefixID.ToString(),
+                    Text = item.Name.ToString()
 
 
-        //        });
+                });
 
-        //    }
-        //}
+            }
+        }
 
         //public ProviderViewModel(IEnumerable<Patient> patients)
         //{

@@ -34,17 +34,7 @@ namespace Capstone.Controllers
             return View (allContacts);
         }
 
-        
-       
-
-        // GET: Contact/Details/5
-        public IActionResult Details(int id)
-        {
-            return View();
-        }
-
-
-
+    
 
         // GET: Contact/Create
        

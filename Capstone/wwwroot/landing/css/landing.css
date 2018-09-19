@@ -7,6 +7,7 @@ html, body, #main {
     font-family: sans-serif;
     color: #fff;
     
+    
 }
 
 #main {
@@ -42,26 +43,20 @@ h3 {
 .caption h1 {
     text-shadow: 1px 1px 15px #000;
     
+    
 }
 .caption h3 {
     
     text-shadow: 1px 1px 10px #000;
     padding-bottom: 1rem;
 }
-
-.btn-primary {
-    
-    background-color: #135486; 
-    border: 1px solid #135486;
-    box-shadow: 1px 1px 10px #000 
-    
-
-}
-
-.btn-primary:hover {
-    background-color: #df3040; 
-    border: 1px solid #df3040; 
-
+.link-btn a{
+   
+    background: red !important;
+    color: white !important;
+    padding: 1em 1.5em !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
 }
 
 

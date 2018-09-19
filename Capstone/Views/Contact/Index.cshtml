@@ -1,18 +1,209 @@
 ﻿@model Capstone.ViewModels.ContactViewModel
+@*@foreach (Provider item in Model.Providers)
+    {
+
+        <td>@item.PhoneNumber</td>
+
+    }*@
 
 
-
-@foreach (Provider item in Model.Providers)
-{
-
-    <p>@item.PhoneNumber</p>
-
-}
 
 @*@foreach (Store item in Model.Stores)
-{
+    {
 
-    <p>@item.PhoneNumber</p>
+        <p>@item.PhoneNumber</p>
 
-}*@
+    }*@
 
+
+
+
+<div class="outer-tab">
+
+    @* tab box start *@
+
+    <div class="tab-box nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li><a href="#tab_1" data-toggle="tab">Stores</a></li>
+            <li><a href="#tab_2" data-toggle="tab">Providers</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+
+                @* stores box start *@
+                <div class="box">
+
+                    @*box body start*@
+                    <div class="body">
+                        <div id="store_table_wrapper" class="storeData_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="stores_table" class="table table-bordered table-striped dataTable" role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>Location</th>
+                                                <th>Address</th>
+                                                <th>Phone Number</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr role="row" class="odd">
+                                                <td>101</td>
+                                                <td>5607 Johns Rd Suite 2202 A</td>
+                                                <td>(813)555-5555</td>
+
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td>004</td>
+                                                <td>123 sesame st orlando fl 33612 </td>
+                                                <td>(813)222-4584 </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                        @*<tfoot></tfoot>*@
+                                    </table>
+                                </div>
+                            </div>
+                            @* pagination section start *@
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTable_info" id="storeData_info" role="status"> Showing 1-10 of 50 entries</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="storeData_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous" id="storeData_previous"> <a href="#">Previous</a></li>
+                                            <li class=" paginate_button"><a>1</a></li>
+                                            <li class=" paginate_button"><a>2</a></li>
+                                            <li class=" paginate_button"><a>3</a></li>
+
+
+                                            <li class="paginate_button next" id="storeData_next"> <a href="#">Next</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    @*box body end*@
+
+
+                </div>
+
+
+                @*stores box end*@
+
+
+            </div>
+            <div class="tab-pane" id="tab_2">
+
+                @* stores box start *@
+                <div class="box">
+
+                    @*box body start*@
+                    <div class="body">
+                        <div id="provider_table_wrapper" class="providerData_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="provider_table" class="table table-bordered table-striped  dataTable" role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th>Company</th>
+
+                                                <th>Phone Number</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @foreach (Provider item in Model.Providers)
+                                            {
+
+                                                <tr role="row" class="odd">
+
+
+
+                                                    <td>@item.Name</td>
+
+                                                    <td>@item.PhoneNumber</td>
+
+
+
+
+
+                                                </tr>
+                                                <tr role="row" class="even">
+
+                                                    @* got to figure out way to render data so it shows in even and odd rows *@
+
+                                                </tr>
+
+
+
+                                            }
+
+
+                                        </tbody>
+
+                                        @*<tfoot></tfoot>*@
+                                    </table>
+                                </div>
+                            </div>
+                            @* pagination section start *@
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTable_info" id="providerData_info" role="status"> Showing 1-10 of 50 entries</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="storeData_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous" id="providerData_previous"> <a href="#">Previous</a></li>
+                                            <li class=" paginate_button"><a>1</a></li>
+                                            <li class=" paginate_button"><a>2</a></li>
+                                            <li class=" paginate_button"><a>3</a></li>
+
+
+                                            <li class="paginate_button next" id="providerData_next"> <a href="#">Next</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    @*box body end*@
+
+
+                </div>
+
+
+                @*stores box end*@
+
+            </div>
+
+        </div>
+
+    </div>
+    @* tab box end *@
+
+
+</div>
+
+@*TODO: Get page layout set
+TODO: Find out how to enable pagination
+TODO: enable info data for footer section
+TODO: look into how to implement search functionality
+TODO:add css styling*@  

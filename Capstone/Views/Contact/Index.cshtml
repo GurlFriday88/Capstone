@@ -1,28 +1,15 @@
 ﻿@model Capstone.ViewModels.ContactViewModel
-@*@foreach (Provider item in Model.Providers)
-    {
-
-        <td>@item.PhoneNumber</td>
-
-    }*@
-
-
-
-@*@foreach (Store item in Model.Stores)
-    {
-
-        <p>@item.PhoneNumber</p>
-
-    }*@
 
 
 
 
-<div class="outer-tab">
+
+<div class="row" style="background:green">
+   
 
     @* tab box start *@
 
-    <div class="tab-box nav-tabs-custom">
+    <div class="tab-box nav-tabs-custom col-md-8" style="width: 75% ;margin:0 0 0 12.5%;">
         <ul class="nav nav-tabs">
             <li><a href="#tab_1" data-toggle="tab">Stores</a></li>
             <li><a href="#tab_2" data-toggle="tab">Providers</a></li>
@@ -50,17 +37,31 @@
                                         </thead>
 
                                         <tbody>
-                                            <tr role="row" class="odd">
+                                            <tr role="row" class="row_item">
+                                                @*@foreach (Store item in Model.Stores)
+                                                  {
+
+                                                        <td>@item.Name</td>
+                                                        <td>@item.Address</td>
+                                                        <td>@item.PhoneNumber</td>
+
+                                                  }*@
+
                                                 <td>101</td>
-                                                <td>5607 Johns Rd Suite 2202 A</td>
-                                                <td>(813)555-5555</td>
+                                                <td>3600 carrollwood cir plc tampa fl, 33612</td>
+                                                <td>(813)623-9948</td>
+
+                                                
+
 
                                             </tr>
-                                            <tr role="row" class="even">
-                                                <td>004</td>
-                                                <td>123 sesame st orlando fl 33612 </td>
-                                                <td>(813)222-4584 </td>
+
+                                            <tr>
+                                                <td>101</td>
+                                                <td>3600 carrollwood cir plc tampa fl, 33612</td>
+                                                <td>(813)623-9948</td>
                                             </tr>
+                                                
 
                                         </tbody>
 
@@ -118,8 +119,9 @@
                                         <thead>
                                             <tr role="row">
                                                 <th>Company</th>
-
                                                 <th>Phone Number</th>
+
+                                                
 
                                             </tr>
                                         </thead>
@@ -128,24 +130,21 @@
                                             @foreach (Provider item in Model.Providers)
                                             {
 
-                                                <tr role="row" class="odd">
+                                               <tr role="row" class="row_item">
 
 
 
-                                                    <td>@item.Name</td>
+                                                <td>@item.Name</td>
 
-                                                    <td>@item.PhoneNumber</td>
-
-
-
+                                                <td>@item.PhoneNumber</td>
+                                                
 
 
-                                                </tr>
-                                                <tr role="row" class="even">
 
-                                                    @* got to figure out way to render data so it shows in even and odd rows *@
 
-                                                </tr>
+
+                                               </tr>
+                                                
 
 
 
@@ -202,8 +201,8 @@
 
 </div>
 
-@*TODO: Get page layout set
+@*
 TODO: Find out how to enable pagination
 TODO: enable info data for footer section
 TODO: look into how to implement search functionality
-TODO:add css styling*@  
+TODO:add css styling dont forget to add before and after styling*@  

@@ -1,11 +1,13 @@
 ﻿@model Capstone.ViewModels.ContactViewModel
+@using X.PagedList.Mvc.Core;
+
 
 
 
 
 
 <div class="row" style="background:green">
-   
+
 
     @* tab box start *@
 
@@ -38,20 +40,20 @@
 
                                         <tbody>
                                             <tr role="row" class="row_item">
-                                                @*@foreach (Store item in Model.Stores)
-                                                  {
+                                                @foreach (var item in Model.Stores)
+                                                {
 
-                                                        <td>@item.Name</td>
-                                                        <td>@item.Address</td>
-                                                        <td>@item.PhoneNumber</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Address</td>
+                                                    <td>@item.PhoneNumber</td>
 
-                                                  }*@
+                                                }
 
                                                 <td>101</td>
                                                 <td>3600 carrollwood cir plc tampa fl, 33612</td>
                                                 <td>(813)623-9948</td>
 
-                                                
+
 
 
                                             </tr>
@@ -61,7 +63,7 @@
                                                 <td>3600 carrollwood cir plc tampa fl, 33612</td>
                                                 <td>(813)623-9948</td>
                                             </tr>
-                                                
+
 
                                         </tbody>
 
@@ -71,24 +73,7 @@
                             </div>
                             @* pagination section start *@
                             <div class="row">
-                                <div class="col-sm-5">
-                                    <div class="dataTable_info" id="storeData_info" role="status"> Showing 1-10 of 50 entries</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="storeData_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button previous" id="storeData_previous"> <a href="#">Previous</a></li>
-                                            <li class=" paginate_button"><a>1</a></li>
-                                            <li class=" paginate_button"><a>2</a></li>
-                                            <li class=" paginate_button"><a>3</a></li>
-
-
-                                            <li class="paginate_button next" id="storeData_next"> <a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-
-
-                                </div>
+                                
                             </div>
 
                         </div>
@@ -121,7 +106,7 @@
                                                 <th>Company</th>
                                                 <th>Phone Number</th>
 
-                                                
+
 
                                             </tr>
                                         </thead>
@@ -130,21 +115,21 @@
                                             @foreach (Provider item in Model.Providers)
                                             {
 
-                                               <tr role="row" class="row_item">
+                                                <tr role="row" class="row_item">
 
 
 
-                                                <td>@item.Name</td>
+                                                    <td>@item.Name</td>
 
-                                                <td>@item.PhoneNumber</td>
-                                                
-
+                                                    <td>@item.PhoneNumber</td>
 
 
 
 
-                                               </tr>
-                                                
+
+
+                                                </tr>
+
 
 
 
@@ -155,28 +140,16 @@
 
                                         @*<tfoot></tfoot>*@
                                     </table>
+
+
                                 </div>
                             </div>
                             @* pagination section start *@
                             <div class="row">
-                                <div class="col-sm-5">
-                                    <div class="dataTable_info" id="providerData_info" role="status"> Showing 1-10 of 50 entries</div>
-                                </div>
-                                <div class="col-sm-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="storeData_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button previous" id="providerData_previous"> <a href="#">Previous</a></li>
-                                            <li class=" paginate_button"><a>1</a></li>
-                                            <li class=" paginate_button"><a>2</a></li>
-                                            <li class=" paginate_button"><a>3</a></li>
+                                <p>Page @(Model.Providers.PageCount < Model.Providers.PageNumber ? 0 : Model.Providers.PageNumber) of @Model.Providers.PageNumber</p>
+                                @Html.PagedListPager(Model.Providers, page => Url.Action("Contact","Index", new { page }))
+                                
 
-
-                                            <li class="paginate_button next" id="providerData_next"> <a href="#">Next</a></li>
-                                        </ul>
-                                    </div>
-
-
-                                </div>
                             </div>
 
                         </div>
@@ -201,8 +174,9 @@
 
 </div>
 
+
 @*
-TODO: Find out how to enable pagination
-TODO: enable info data for footer section
-TODO: look into how to implement search functionality
-TODO:add css styling dont forget to add before and after styling*@  
+    TODO: Find out how to enable pagination
+    TODO: enable info data for footer section
+    TODO: look into how to implement search functionality
+    TODO:add css styling dont forget to add before and after styling*@  

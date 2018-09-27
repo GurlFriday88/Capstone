@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Capstone.Data;
 using Capstone.Models;
 using Capstone.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace Capstone.Controllers
 {
@@ -20,19 +17,36 @@ namespace Capstone.Controllers
         }
         
 
-        public IActionResult Index()
+        public IActionResult Index( string searchString, string currentFilter, int? page)
         {
+            int pageNumber = page ?? 1;
+            int pageSize = 5;
+            
 
-            IList<Provider> allProviders = context.Providers.ToList();
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
-            IList<Store> allStores = context.Stores.ToList();
+            ViewBag.CurrentFilter = searchString;
+
 
             ContactViewModel allContacts = new ContactViewModel();
-            allContacts.Providers = allProviders;
-            allContacts.Stores = allStores;
-   
+            allContacts.Providers = context.Providers.ToPagedList(pageNumber, pageSize);
+            allContacts.Stores = context.Stores.ToPagedList(pageNumber, pageSize);
+
+
+
+
             return View (allContacts);
         }
+
+
+       
 
     
 

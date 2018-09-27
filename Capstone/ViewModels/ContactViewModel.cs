@@ -1,27 +1,19 @@
 ﻿using Capstone.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Capstone.ViewModels
 {
     public class ContactViewModel
     {
 
-        public Provider ProviderModel{get; set;}
         public Store StoreModel { get; set; }
+        public Provider ProviderModel { get; set; }
 
-
-
-
-        public IList<Provider> Providers { get; set; }
-
-        public IList<Store> Stores { get; set; }
+        public IPagedList<Provider> Providers { get; set; }
+        public IPagedList<Store> Stores { get; set; }
 
         public ContactViewModel()
         {
-
         }
     }
 

@@ -2,19 +2,20 @@
 @using X.PagedList.Mvc.Core;
 
 
+<link href="~/dist/css/main.css" rel="stylesheet" />
 
 
 
 
-<div class="row" style="background:green">
+<div class="row">
 
 
     @* tab box start *@
 
-    <div class="tab-box nav-tabs-custom col-md-8" style="width: 75% ;margin:0 0 0 12.5%;">
+    <div class="tab-box nav-tabs-custom col-md-8" >
         <ul class="nav nav-tabs">
-            <li><a href="#tab_1" data-toggle="tab">Stores</a></li>
-            <li><a href="#tab_2" data-toggle="tab">Providers</a></li>
+            <li><a href="#tab_1" data-toggle="tab">STORES</a></li>
+            <li><a href="#tab_2" data-toggle="tab">PROVIDERS</a></li>
         </ul>
 
         <div class="tab-content">
@@ -73,7 +74,10 @@
                             </div>
                             @* pagination section start *@
                             <div class="row">
-                                
+
+
+                                <p>Page @(Model.Stores.PageCount < Model.Stores.PageNumber ? 0 : Model.Stores.PageNumber) of @Model.Stores.PageNumber</p>
+                                @Html.PagedListPager(Model.Stores, page => Url.Action("Contact", "Index", new { page }))
                             </div>
 
                         </div>
@@ -147,8 +151,8 @@
                             @* pagination section start *@
                             <div class="row">
                                 <p>Page @(Model.Providers.PageCount < Model.Providers.PageNumber ? 0 : Model.Providers.PageNumber) of @Model.Providers.PageNumber</p>
-                                @Html.PagedListPager(Model.Providers, page => Url.Action("Contact","Index", new { page }))
-                                
+                                @Html.PagedListPager(Model.Providers, page => Url.Action("Contact", "Index", new { page }))
+
 
                             </div>
 
@@ -176,7 +180,6 @@
 
 
 @*
-    TODO: Find out how to enable pagination
-    TODO: enable info data for footer section
+
     TODO: look into how to implement search functionality
     TODO:add css styling dont forget to add before and after styling*@  

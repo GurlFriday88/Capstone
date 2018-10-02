@@ -6,6 +6,9 @@
     // An array of relative input file paths. Globbing patterns supported
     "inputFiles": [
       "wwwroot/dist/css/AdminLTE.min.css"
+      
+
+
     ]
   },
   {

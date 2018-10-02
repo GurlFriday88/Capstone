@@ -7,6 +7,7 @@ using Capstone.Models;
 using Capstone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace Capstone.Controllers
 {
@@ -30,14 +31,44 @@ namespace Capstone.Controllers
 
 
 
-        public IActionResult ListPrefixes()
-        {
-            IList<Prefix> allPrefixes = context.Prefixes.Include(b => b.Provider).ToList();
-
-            return View(allPrefixes);
-        }
 
         //routes to add prefix view
+
+
+
+        public IActionResult ListPrefixes(string sortOrder , string searchString, string currentFilter, int? page)
+        {
+            int pageNumber = page ?? 1;
+            int pageSize = 5;
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            var Prefixes = from p in context.Prefixes.Include(b => b.Provider) select p;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            //checks if there is a search string if so then populate prefixes variable with all prefixes containing the search string
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Prefixes = Prefixes.Where(p => p.Name.Contains(searchString));
+            }
+           
+
+
+            return View(Prefixes.ToPagedList(pageNumber, pageSize));
+        }
+
+
+
+
 
         public IActionResult Add()
         {
@@ -101,3 +132,7 @@ namespace Capstone.Controllers
 
 
 }
+
+//TODO: add search bar 
+//TODO: test that search works
+//TODO: Add alpha sort 

@@ -70,6 +70,12 @@
 
                                         @*<tfoot></tfoot>*@
                                     </table>
+
+                                    @if (Model.Providers.Count == 0)
+                                    {
+                                        <p>Add some <a asp-controller="Contact" asp-action="Add">Stores?</a></p>
+
+                                    }
                                 </div>
                             </div>
                             @* pagination section start *@
@@ -145,6 +151,12 @@
                                         @*<tfoot></tfoot>*@
                                     </table>
 
+                                    @if (Model.Providers.Count == 0)
+                                    {
+                                        <p>Add some <a asp-controller="Provider" asp-action="Add">Providers?</a></p>
+
+                                    }
+
 
                                 </div>
                             </div>
@@ -183,3 +195,6 @@
 
     TODO: look into how to implement search functionality
     TODO:add css styling dont forget to add before and after styling*@  
+
+
+if ()

@@ -1,0 +1,78 @@
+﻿
+@model Capstone.ViewModels.ContactViewModel;
+
+
+
+<section>
+    <div class="col-sm-8 mx-0">
+
+        <div class="contact-form box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Add a Store</h3>
+
+
+            </div>
+            <!-- /.box-header -->
+            @*box body*@
+            <form class="form-horizontal" asp-controller="Contact" asp-action="Add" method="post">
+                <div class="box-body">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+
+                        <label class="col-sm-2 control-label" asp-for="StoreModel.Name">Name</label>
+
+
+                        <div class="col-sm-10">
+                            <input asp-for="StoreModel.Name" class="form-control" />
+                            <span asp-validation-for="StoreModel.Name" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label asp-for="StoreModel.Address" class=" col-sm-2 control-label">Address</label>
+
+
+                        <div class="col-sm-10">
+                            <input asp-for="StoreModel.Address" class="form-control" />
+                            <span asp-validation-for="StoreModel.Address" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label asp-for="StoreModel.PhoneNumber" class="col-sm-2 control-label">Phone Number</label>
+
+
+                        <div class="col-sm-10">
+                            <input type="tel" asp-for="StoreModel.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="StoreModel.PhoneNumber" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                @*box body end*@
+
+                <!-- box-footer -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <!-- /.box -->
+
+
+    </div>
+
+
+</section>
+

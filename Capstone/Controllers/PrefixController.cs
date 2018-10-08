@@ -32,17 +32,16 @@ namespace Capstone.Controllers
 
 
 
-        //routes to add prefix view
-
-
-
         public IActionResult ListPrefixes(string sortOrder , string searchString, string currentFilter, int? page)
         {
             int pageNumber = page ?? 1;
             int pageSize = 5;
+
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            var Prefixes = from p in context.Prefixes.Include(b => b.Provider) select p;
+            ViewBag.ProviderSortParm = sortOrder == "provider" ? "provider_desc" : "provider";
+            
+           
 
             if (searchString != null)
             {
@@ -52,18 +51,49 @@ namespace Capstone.Controllers
             {
                 searchString = currentFilter;
             }
-
             ViewBag.CurrentFilter = searchString;
+            var Prefixes = from p in context.Prefixes.Include(b => b.Provider) select p;
+            
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Prefixes = Prefixes.Where(p => p.Name.Contains(searchString.ToUpper()));
+
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    Prefixes = Prefixes.OrderByDescending(p => p.Name);
+                    break;
+                case "provider":
+                    Prefixes = Prefixes.OrderBy(p => p.Provider);
+                    break;
+                case "provider_desc":
+                    Prefixes = Prefixes.OrderByDescending(p => p.Provider);
+                    break;
+                default:
+                    Prefixes = Prefixes.OrderBy(p=> p.Name);
+                    break;
+            }
+
+           
 
             //checks if there is a search string if so then populate prefixes variable with all prefixes containing the search string
             if (!String.IsNullOrEmpty(searchString))
             {
                 Prefixes = Prefixes.Where(p => p.Name.Contains(searchString));
             }
-           
+
+            AddPrefixViewModel prefixView = new AddPrefixViewModel();
+            prefixView.Prefixes = Prefixes.ToPagedList(pageNumber, pageSize);
 
 
-            return View(Prefixes.ToPagedList(pageNumber, pageSize));
+
+
+
+            return View(prefixView);
         }
 
 

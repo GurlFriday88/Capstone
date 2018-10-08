@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Capstone.ViewModels
 {
@@ -17,6 +18,8 @@ namespace Capstone.ViewModels
 
         [Required(ErrorMessage ="Select A Provider From List!")]
         public int SelectedProvider { get; set; }
+
+        public IPagedList<Prefix> Prefixes { get; set; }
 
         //List of providers
 

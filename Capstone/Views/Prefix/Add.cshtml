@@ -1,35 +1,43 @@
 ﻿@model Capstone.ViewModels.AddPrefixViewModel
+<section class=" row ">
 
-<h1>Add BCBS Prefix </h1>
+    <div class="col-sm-8">
+        
 
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Add Your Prefix and it's Provider Location here</h3>
-    </div>
-    <!-- /.box-header -->
-    <!-- form start -->
-    <form class="form-horizontal" asp-controller="Prefix" asp-action="Add" method="post">
+        <div class="box box-primary ">
+            <div class="box-header with-border">
+                <h1 class="box-title">Add BCBS Prefix </h1>
+                <p class="box-comment"><small>Add Your Prefix and it's Provider Location here</small></p>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" asp-controller="Prefix" asp-action="Add" method="post">
 
-        <div class="box-body">
-            <div class="form-group">
-                <label class="col-sm-2 control-label" asp-for="Name"></label>
-                <div class="col-sm-10">
-                    <input class="form-control" asp-for="Name" placeholder="Enter prefix here">
-                    <span asp-validation-for="Name"></span>
+                <div class="box-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label" asp-for="Name">Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" asp-for="Name" placeholder="Enter prefix here">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @*dropdown menu for providers*@
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label" asp-for="Providers">Providers</label>
+                        <select asp-for="SelectedProvider" asp-items="Model.Providers"></select>
+                        <span asp-validation-for="SelectedProvider" class="text-danger"></span>
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                    </div>
+                    <!-- /.box-footer -->
+
                 </div>
-            </div>
-
-            @*dropdown menu for providers*@
-            <div class="form-group">
-                <label class="col-sm-2 control-label" asp-for="Providers"></label>
-                <select asp-for="SelectedProvider" asp-items="Model.Providers"></select>
-                <span asp-validation-for="SelectedProvider"></span>
-            </div>
-              
-        <!-- /.box-body -->
-        <div class="box-footer">
-            <button type="submit" class="btn btn-info pull-right">Submit</button>
+            </form>
         </div>
-        <!-- /.box-footer -->
-    </form>
-</div>
+    </div>
+</section>

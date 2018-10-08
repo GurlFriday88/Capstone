@@ -1,7 +1,5 @@
-﻿
-
-@model IList<Capstone.Models.Prefix>
-
+﻿@model Capstone.ViewModels.AddPrefixViewModel;
+@using X.PagedList.Mvc.Core;
 
 <div class="container">
     <div class="row ">
@@ -17,34 +15,54 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            Find by Prefix: @Html.TextBox("SearchString")
+                            <input type="submit" value="Search" />
+                        </p>
+                    }
+
                     <table class="table">
 
                         <tr>
-                            <th>Alpha Prefix</th>
-                            <th>Location</th>
+                            <th> @Html.ActionLink("Name", "ListPrefixes", new { sortOrder = ViewBag.NameSortParm })</th>
+                            <th>@Html.ActionLink("Location", "ListPrefixes", new { sortOrder = ViewBag.ProviderSortParm })</th>
                             <th>Action</th>
                         </tr>
 
-                        @foreach (Prefix prefix in Model)
+                        @foreach (Prefix prefix in Model.Prefixes)
                         {
                             <tr>
                                 <td>@prefix.Name</td>
                                 <td>@prefix.Provider.Name</td>
-                                <td><a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@prefix.PrefixID">Delete</a></td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="Delete" asp-route-id="@prefix.PrefixID">Delete</a>
+                                   
+                                </td>
 
 
 
                             </tr>
                         }
                     </table>
+                    <p>@(Model.Prefixes.PageCount < Model.Prefixes.PageNumber ? 0 : Model.Prefixes.PageNumber) of @Model.Prefixes.PageCount</p>
 
-                    @if (Model.Count == 0)
+                    @Html.PagedListPager(Model.Prefixes, page => Url.Action("Prefix", "ListPrefixes",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+                    @if (Model.Prefixes.Count == 0)
                     {
                         <p>Add some prefixes</p>
 
                     }
                 </div>
                 <!-- /.box-body -->
+                <div class="box-footer">
+
+
+
+                </div>
             </div>
             <!-- /.box -->
 
